@@ -3,7 +3,7 @@ import { HashRouter as Router, Route, Switch, Link } from "react-router-dom";
 import "./JobsPanel.css";
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
-import { Avatar, Typography } from "@material-ui/core";
+import { Avatar, Typography, CardActionArea } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import DetailedJob from "./DetailedJob";
 import Moment from "react-moment";
@@ -27,7 +27,7 @@ const JobsPanel = () => {
   const [jobs, setJobs] = useState([]);
   useEffect(() => {
     fetch(
-      "https://damp-taiga-98560.herokuapp.com/jobs.github.com/positions.json?description=ruby"
+      "https://damp-taiga-98560.herokuapp.com/jobs.github.com/positions.json?description=python&page=1"
     )
       .then((response) => response.json())
       .then((data) => {
@@ -40,8 +40,8 @@ const JobsPanel = () => {
       <div className="job_listings">
         {jobs.map((job, index) => (
           <div className="box_container" key={index}>
-            <Card className={classes.root}>
-              <Link to={`${job.id}`}>
+            <Link to={`${job.id}`} style={{ textDecoration: "none" }}>
+              <Card className={classes.root}>
                 <CardContent>
                   <div className="avatar">
                     <Avatar
@@ -51,26 +51,32 @@ const JobsPanel = () => {
                       variant="square"
                     ></Avatar>
                   </div>
-                  <Typography
-                    className={classes.pos}
-                    color="textSecondary"
-                    gutterBottom
-                  >
-                    <Moment fromNow>{job.created_at}</Moment>
-                    <span> •</span> {job.type}
-                  </Typography>
-                  <Typography variant="h6" component="h6">
-                    {job.title}
-                  </Typography>
-                  <Typography color="textSecondary" gutterBottom>
-                    {job.company}
-                  </Typography>
-                  <Typography color="primary" gutterBottom>
-                    {job.location}
-                  </Typography>
+                  <div className="card_content">
+                    <div className="card_content_top">
+                      <Typography
+                        className={classes.pos}
+                        color="textSecondary"
+                        gutterBottom
+                      >
+                        <Moment fromNow>{job.created_at}</Moment>
+                        <span> •</span> {job.type}
+                      </Typography>
+                      <Typography variant="h6" component="h6">
+                        {job.title}
+                      </Typography>
+                      <Typography color="textSecondary" gutterBottom>
+                        {job.company}
+                      </Typography>
+                    </div>
+                    <div className="location">
+                      <Typography color="primary" gutterBottom>
+                        {job.location}
+                      </Typography>
+                    </div>
+                  </div>
                 </CardContent>
-              </Link>
-            </Card>
+              </Card>
+            </Link>
           </div>
         ))}
       </div>

@@ -8,12 +8,8 @@ import Box from "@material-ui/core/Box";
 import "./Header.css";
 import "./DetailedJob.css";
 import Moment from "react-moment";
-import { blue } from "@material-ui/core/colors";
 
 const useStyles = makeStyles((theme) => ({
-  card: {
-    backgroundColor: blue,
-  },
   back: {
     backgroundColor: "#5865e0",
     color: "#ffffff",
