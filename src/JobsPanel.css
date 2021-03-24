@@ -1,0 +1,15 @@
+.job_listings {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 80%;
+}
+
+.box_container {
+  /* align-items: stretch; */
+  margin: 20px;
+}
+
+.avatar img {
+  object-fit: "scale-down";
+}

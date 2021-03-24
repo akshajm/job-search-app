@@ -1,0 +1,16 @@
+.search_box {
+  display: flex;
+}
+
+.header {
+  background-color: #5865e0;
+  border-radius: 0 0 0 55px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.filter_box {
+  width: 80%;
+}
