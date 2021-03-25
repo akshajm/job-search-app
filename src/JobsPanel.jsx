@@ -16,6 +16,8 @@ import {
   description,
   fulltime,
   location,
+  error_occured,
+  no_data,
 } from "./actions/index";
 import CircularProgress from "@material-ui/core/CircularProgress";
 
@@ -42,46 +44,72 @@ const JobsPanel = () => {
   const new_location = useSelector((state) => state.location_reducer);
   const is_fulltime = useSelector((state) => state.fulltime_reducer);
   const is_submit = useSelector((state) => state.is_submitted_reducer);
+  const if_error = useSelector((state) => state.error_occured_reducer);
+  const if_no_data = useSelector((state) => state.no_data_reducer);
 
   const fetch_url =
     "https://damp-taiga-98560.herokuapp.com/jobs.github.com/positions.json";
+  // "https://jobs.github.com/positions.json";
 
   useEffect(() => {
     if (is_submit) {
+      console.log(1);
       fetch(
         fetch_url +
           `?description=${new_description}&location=${new_location}&full_time=${is_fulltime}`
       )
         .then((response) => response.json())
         .then((data) => {
-          console.log(data, "sub");
           dispatch(jobs(data));
+        })
+        .catch(() => {
+          dispatch(error_occured(true));
         });
     } else {
       if (current_latitude !== 0 && current_longitude !== 0) {
+        console.log(3);
         fetch(fetch_url + `?lat=${current_latitude}&long=${current_longitude}`)
           .then((response) => response.json())
           .then((data) => {
-            console.log(data, "submi");
+            if (data.length === 0) {
+              dispatch(no_data(true));
+            } else {
+              dispatch(no_data(false));
+            }
             dispatch(jobs(data));
+          })
+          .catch(() => {
+            dispatch(error_occured(true));
           });
       }
     }
   }, [current_latitude, current_longitude]);
 
   useEffect(() => {
-    if (is_submit)
+    if (is_submit) {
+      console.log(4);
       fetch(
         fetch_url +
           `?description=${new_description}&location=${new_location}&full_time=${is_fulltime}`
       )
         .then((response) => response.json())
         .then((data) => {
+          if (data.length === 0) {
+            console.log("shud be here");
+            dispatch(no_data(true));
+          } else {
+            console.log("instead here");
+            dispatch(no_data(false));
+          }
           dispatch(jobs(data));
           dispatch(is_submitted(false));
           dispatch(description(""));
           dispatch(location(""));
+        })
+        .catch(() => {
+          dispatch(error_occured(true));
         });
+    }
   }, [is_submit]);
 
   const current_listings = useSelector((state) => state.job_reducer);
@@ -89,12 +117,17 @@ const JobsPanel = () => {
   return (
     <Router>
       <div className="job_listings">
-        {current_listings.length === 0 && (
+        {if_error ? (
+          <h2>
+            Error occured while getting data from heroku app. Try reloading
+          </h2>
+        ) : if_no_data ? (
+          <h2>No job listing found.</h2>
+        ) : current_listings.length === 0 ? (
           <div>
             <h3> Loading</h3> <CircularProgress />{" "}
           </div>
-        )}
-        {current_listings.length > 0 &&
+        ) : (
           current_listings.map((job, index) => (
             <div className="box_container" key={index}>
               <Link to={`${job.id}`} style={{ textDecoration: "none" }}>
@@ -135,7 +168,8 @@ const JobsPanel = () => {
                 </Card>
               </Link>
             </div>
-          ))}
+          ))
+        )}
       </div>
     </Router>
   );

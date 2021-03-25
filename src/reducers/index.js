@@ -5,6 +5,8 @@ import longitude_reducer from "./longitude.js";
 import location_reducer from "./location.js";
 import job_reducer from "./all_jobs.js";
 import is_submitted_reducer from "./is_submitted.js";
+import error_occured_reducer from "./error_occured.js";
+import no_data_reducer from "./no_data.js";
 
 import { combineReducers } from "redux";
 
@@ -16,6 +18,8 @@ const root_reducer = combineReducers({
   latitude_reducer,
   longitude_reducer,
   is_submitted_reducer,
+  error_occured_reducer,
+  no_data_reducer,
 });
 
 export default root_reducer;

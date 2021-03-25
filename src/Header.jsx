@@ -16,6 +16,7 @@ import {
   latitude,
   longitude,
   is_submitted,
+  jobs,
 } from "./actions/index";
 
 const useStyles = makeStyles((theme) => ({}));
@@ -39,6 +40,7 @@ const Header = () => {
 
   const handle_form_submit = (e) => {
     e.preventDefault();
+    dispatch(jobs([]));
     dispatch(is_submitted(true));
     // const new_description = useSelector((state) => state.description_reducer);
     // const new_location = useSelector((state) => state.location_reducer);

@@ -45,3 +45,17 @@ export const is_submitted = (is_submitted) => {
     payload: is_submitted,
   };
 };
+
+export const error_occured = (error) => {
+  return {
+    type: "ERROR",
+    payload: error,
+  };
+};
+
+export const no_data = (is_data) => {
+  return {
+    type: "NO_DATA",
+    payload: is_data,
+  };
+};
