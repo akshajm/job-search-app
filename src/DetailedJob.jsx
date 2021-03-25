@@ -194,7 +194,7 @@ const DetailedJob = () => {
                     style={
                       current_dark_mode
                         ? { color: "rgb(255, 255, 255, 0.5)" }
-                        : {}
+                        : { color: "rgb(0, 0, 0, 0.9)" }
                     }
                     gutterBottom
                   >
@@ -204,7 +204,11 @@ const DetailedJob = () => {
                   <div className="split_requirements">
                     <div
                       className="title"
-                      style={current_dark_mode ? { color: WHITE } : {}}
+                      style={
+                        current_dark_mode
+                          ? { color: WHITE }
+                          : { color: LIGHT_BLUE }
+                      }
                     >
                       <Typography variant="h6" component="h6">
                         {description.title}
@@ -227,7 +231,7 @@ const DetailedJob = () => {
                     style={
                       current_dark_mode
                         ? { color: "rgb(255, 255, 255, 0.5)" }
-                        : {}
+                        : { color: "rgb(0, 0, 0, 0.9)" }
                     }
                   >
                     {description.description}
