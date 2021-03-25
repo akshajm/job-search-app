@@ -9,6 +9,9 @@
   display: flex;
   align-items: center;
   flex-direction: column;
+  max-height: 90px;
+  height: 100%;
+  margin-bottom: 2%;
 }
 
 .title_bar {
@@ -30,6 +33,6 @@
   padding: 2px;
 }
 
-.filter_box {
-  width: 100%;
+.filter {
+  width: 73%;
 }

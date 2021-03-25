@@ -152,6 +152,7 @@ const Header = () => {
                 <Button
                   type="submit"
                   variant="contained"
+                  color="primary"
                   onClick={(e) => handle_form_submit(e)}
                   style={{ backgroundColor: PURPLE }}
                 >

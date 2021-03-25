@@ -65,3 +65,10 @@ export const dark_mode = () => {
     type: "DARK_MODE",
   };
 };
+
+export const detailed_data = (data) => {
+  return {
+    type: "DETAILED_DATA",
+    payload: data,
+  };
+};

@@ -7,6 +7,7 @@ import { Avatar, Typography, CardActionArea } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import DetailedJob from "./DetailedJob";
 import Moment from "react-moment";
+import { loading_component as LoadingComponent } from "./loading_component";
 import { useSelector, useDispatch } from "react-redux";
 import {
   jobs,
@@ -19,7 +20,6 @@ import {
   error_occured,
   no_data,
 } from "./actions/index";
-import CircularProgress from "@material-ui/core/CircularProgress";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -125,9 +125,10 @@ const JobsPanel = () => {
         ) : if_no_data ? (
           <h2>No job listing found.</h2>
         ) : current_listings.length === 0 ? (
-          <div>
-            <h3> Loading</h3> <CircularProgress />{" "}
-          </div>
+          // <div>
+          //   <h3> Loading</h3> <CircularProgress />{" "}
+          // </div>
+          <LoadingComponent />
         ) : (
           current_listings.map((job, index) => (
             <div className="box_container" key={index}>
