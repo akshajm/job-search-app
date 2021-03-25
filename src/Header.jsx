@@ -22,6 +22,8 @@ import {
   is_submitted,
   jobs,
   dark_mode,
+  no_data,
+  page,
 } from "./actions/index";
 
 const useStyles = makeStyles((theme) => ({}));
@@ -47,6 +49,8 @@ const Header = () => {
     e.preventDefault();
     dispatch(jobs([]));
     dispatch(is_submitted(true));
+    dispatch(no_data(false));
+    dispatch(page(1));
   };
 
   const get_current_position = (position) => {

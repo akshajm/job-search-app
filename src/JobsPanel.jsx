@@ -19,6 +19,7 @@ import {
   location,
   error_occured,
   no_data,
+  page,
 } from "./actions/index";
 
 const useStyles = makeStyles((theme) => ({
@@ -41,6 +42,7 @@ const JobsPanel = () => {
   const classes = useStyles();
   const current_latitude = useSelector((state) => state.latitude_reducer);
   const current_longitude = useSelector((state) => state.longitude_reducer);
+  const current_page = useSelector((state) => state.page_reducer);
   const new_description = useSelector((state) => state.description_reducer);
   const new_location = useSelector((state) => state.location_reducer);
   const is_fulltime = useSelector((state) => state.fulltime_reducer);
@@ -57,10 +59,18 @@ const JobsPanel = () => {
       console.log(1);
       fetch(
         fetch_url +
-          `?description=${new_description}&location=${new_location}&full_time=${is_fulltime}`
+          `?description=${new_description}&location=${new_location}&full_time=${is_fulltime}&page=${current_page}`
       )
         .then((response) => response.json())
         .then((data) => {
+          console.log(
+            `?description=${new_description}&location=${new_location}&full_time=${is_fulltime}&page=${current_page}`
+          );
+          if (data.length === 0) {
+            dispatch(no_data(true));
+          } else {
+            dispatch(no_data(false));
+          }
           dispatch(jobs(data));
         })
         .catch(() => {
@@ -68,44 +78,73 @@ const JobsPanel = () => {
         });
     } else {
       if (current_latitude !== 0 && current_longitude !== 0) {
-        console.log(3);
-        fetch(fetch_url + `?lat=${current_latitude}&long=${current_longitude}`)
-          .then((response) => response.json())
-          .then((data) => {
-            if (data.length === 0) {
-              dispatch(no_data(true));
-            } else {
-              dispatch(no_data(false));
-            }
-            dispatch(jobs(data));
-          })
-          .catch(() => {
-            dispatch(error_occured(true));
-          });
+        console.log(2); // Check for initial click
+        if (current_page === 1) {
+          fetch(
+            fetch_url + `?lat=${current_latitude}&long=${current_longitude}`
+          )
+            .then((response) => response.json())
+            .then((data) => {
+              if (data.length === 0) {
+                dispatch(no_data(true));
+              } else {
+                dispatch(no_data(false));
+              }
+              // dispatch(jobs(data));
+              console.log(
+                `?description=${new_description}&location=${new_location}&full_time=${is_fulltime}&page=${current_page}`
+              );
+
+              dispatch(jobs(data));
+            })
+            .catch(() => {
+              dispatch(error_occured(true));
+            });
+        } else {
+          console.log("AA");
+          fetch(
+            fetch_url +
+              `?description=${new_description}&location=${new_location}&full_time=${is_fulltime}&page=${current_page}`
+          )
+            .then((response) => response.json())
+            .then((data) => {
+              console.log(
+                data,
+                `?description=${new_description}&location=${new_location}&full_time=${is_fulltime}&page=${current_page}`
+              );
+              if (data.length === 0) {
+                dispatch(no_data(true));
+              } else {
+                dispatch(no_data(false));
+              }
+              dispatch(jobs(data));
+            })
+            .catch(() => {
+              dispatch(error_occured(true));
+            });
+        }
       }
     }
-  }, [current_latitude, current_longitude]);
+  }, [current_latitude, current_longitude, current_page]);
 
   useEffect(() => {
     if (is_submit) {
-      console.log(4);
+      console.log(3);
       fetch(
         fetch_url +
-          `?description=${new_description}&location=${new_location}&full_time=${is_fulltime}`
+          `?description=${new_description}&location=${new_location}&full_time=${is_fulltime}&page=${current_page}`
       )
         .then((response) => response.json())
         .then((data) => {
           if (data.length === 0) {
-            console.log("shud be here");
             dispatch(no_data(true));
           } else {
-            console.log("instead here");
             dispatch(no_data(false));
           }
           dispatch(jobs(data));
           dispatch(is_submitted(false));
-          dispatch(description(""));
-          dispatch(location(""));
+          // dispatch(description(""));
+          // dispatch(location(""));
         })
         .catch(() => {
           dispatch(error_occured(true));
@@ -120,7 +159,7 @@ const JobsPanel = () => {
       <div className="job_listings">
         {if_error ? (
           <h2>
-            Error occured while getting data from heroku app. Try reloading
+            Error occured while getting data from heroku app. Try hard reload.
           </h2>
         ) : if_no_data ? (
           <h2>No job listing found.</h2>

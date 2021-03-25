@@ -72,3 +72,10 @@ export const detailed_data = (data) => {
     payload: data,
   };
 };
+
+export const page = (page) => {
+  return {
+    type: "UPDATE_PAGE",
+    payload: page,
+  };
+};

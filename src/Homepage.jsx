@@ -6,6 +6,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import { useSelector } from "react-redux";
 import { PURPLE, WHITE, DARK_BLUE, LIGHT_BLUE, LIGHT_GREY } from "./colors";
 import { createMuiTheme, ThemeProvider } from "@material-ui/core/styles";
+import Pagination from "./Pagination";
 
 const useStyles = makeStyles((theme) => ({
   back: {
@@ -42,6 +43,8 @@ const Homepage = () => {
     },
   });
   const is_dark_mode = useSelector((state) => state.dark_mode_reducer);
+  const current_listings = useSelector((state) => state.job_reducer);
+  const is_submit = useSelector((state) => state.is_submitted_reducer);
   return (
     <ThemeProvider theme={is_dark_mode ? dark : light}>
       <div
@@ -54,6 +57,7 @@ const Homepage = () => {
       >
         <Header />
         <JobsPanel />
+        {current_listings.length === 50 && <Pagination />}
       </div>
     </ThemeProvider>
   );
