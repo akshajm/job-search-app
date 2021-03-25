@@ -27,6 +27,7 @@ const useStyles = makeStyles((theme) => ({
     overflow: "visible",
     height: "100%",
     position: "relative",
+    backgroundColor: theme.palette.primary.dark,
   },
   icon: {
     transform: "translatey( -90%)",

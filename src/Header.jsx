@@ -12,6 +12,7 @@ import LocationOnIcon from "@material-ui/icons/LocationOn";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 // import FormControl from "@material-ui/core/FormControl";
 import { useSelector, useDispatch } from "react-redux";
+import { PURPLE, WHITE, DARK_BLUE, LIGHT_BLUE, LIGHT_GREY } from "./colors";
 import {
   description,
   fulltime,
@@ -46,12 +47,6 @@ const Header = () => {
     e.preventDefault();
     dispatch(jobs([]));
     dispatch(is_submitted(true));
-    // const new_description = useSelector((state) => state.description_reducer);
-    // const new_location = useSelector((state) => state.location_reducer);
-    // const is_fulltime = useSelector((state) => state.fulltime_reducer);
-    // console.log(new_description, new_location, is_fulltime);
-    // let temp = useSelector(state => state.)
-    // let temp = useSelector(state => state.)
   };
 
   const get_current_position = (position) => {
@@ -76,6 +71,7 @@ const Header = () => {
   const current_location = useSelector((state) => state.location_reducer);
   const current_dark_mode = useSelector((state) => state.dark_mode_reducer);
   const classes = useStyles();
+
   return (
     <div className="header">
       <div className="title_bar">
@@ -88,7 +84,7 @@ const Header = () => {
               value="Dark Mode"
               control={
                 <Switch
-                  color="secondary"
+                  color="default"
                   checked={current_dark_mode}
                   onChange={() => on_dark_mode_change()}
                 />
@@ -102,8 +98,15 @@ const Header = () => {
 
       <div className="filter">
         <form>
-          <Card className={classes.padd}>
-            <div className="main_filter">
+          <Card>
+            <div
+              className="main_filter"
+              style={
+                current_dark_mode
+                  ? { backgroundColor: LIGHT_BLUE }
+                  : { backgroundColor: WHITE }
+              }
+            >
               <div className="child_title">
                 <TextField
                   id="description"
@@ -150,6 +153,7 @@ const Header = () => {
                   type="submit"
                   variant="contained"
                   onClick={(e) => handle_form_submit(e)}
+                  style={{ backgroundColor: PURPLE }}
                 >
                   Search
                 </Button>
