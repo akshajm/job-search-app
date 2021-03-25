@@ -7,6 +7,7 @@ import job_reducer from "./all_jobs.js";
 import is_submitted_reducer from "./is_submitted.js";
 import error_occured_reducer from "./error_occured.js";
 import no_data_reducer from "./no_data.js";
+import dark_mode_reducer from "./dark_mode.js";
 
 import { combineReducers } from "redux";
 
@@ -20,6 +21,7 @@ const root_reducer = combineReducers({
   is_submitted_reducer,
   error_occured_reducer,
   no_data_reducer,
+  dark_mode_reducer,
 });
 
 export default root_reducer;

@@ -59,3 +59,9 @@ export const no_data = (is_data) => {
     payload: is_data,
   };
 };
+
+export const dark_mode = () => {
+  return {
+    type: "DARK_MODE",
+  };
+};
