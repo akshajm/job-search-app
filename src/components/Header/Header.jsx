@@ -60,9 +60,13 @@ const Header = () => {
 
   useEffect(() => {
     if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(get_current_position);
+      navigator.geolocation.getCurrentPosition(get_current_position, (err) => {
+        dispatch(latitude(30.2));
+        dispatch(longitude(-120.89));
+      });
     } else {
-      alert("Something went wrong getting location");
+      dispatch(latitude(30.2));
+      dispatch(longitude(-120.89));
     }
   }, []);
 
