@@ -9,6 +9,7 @@ import DetailedJob from "./DetailedJob";
 import Moment from "react-moment";
 import { loading_component as LoadingComponent } from "./loading_component";
 import { useSelector, useDispatch } from "react-redux";
+import JobCard from "./JobCard";
 import {
   jobs,
   latitude,
@@ -164,51 +165,10 @@ const JobsPanel = () => {
         ) : if_no_data ? (
           <h2>No job listing found.</h2>
         ) : current_listings.length === 0 ? (
-          // <div>
-          //   <h3> Loading</h3> <CircularProgress />{" "}
-          // </div>
           <LoadingComponent />
         ) : (
           current_listings.map((job, index) => (
-            <div className="box_container" key={index}>
-              <Link to={`${job.id}`} style={{ textDecoration: "none" }}>
-                <Card className={classes.root}>
-                  <CardContent>
-                    <div className="avatar">
-                      <Avatar
-                        src={job.company_logo}
-                        alt={job.company}
-                        className={classes.icon}
-                        variant="square"
-                      ></Avatar>
-                    </div>
-                    <div className="card_content">
-                      <div className="card_content_top">
-                        <Typography
-                          className={classes.pos}
-                          color="textSecondary"
-                          gutterBottom
-                        >
-                          <Moment fromNow>{job.created_at}</Moment>
-                          <span> •</span> {job.type}
-                        </Typography>
-                        <Typography variant="h6" component="h6">
-                          {job.title}
-                        </Typography>
-                        <Typography color="textSecondary" gutterBottom>
-                          {job.company}
-                        </Typography>
-                      </div>
-                      <div className="location">
-                        <Typography color="primary" gutterBottom>
-                          {job.location}
-                        </Typography>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
-              </Link>
-            </div>
+            <JobCard job={job} index={index} />
           ))
         )}
       </div>
