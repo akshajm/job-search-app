@@ -96,7 +96,6 @@ const DetailedJob = () => {
       });
   }, []);
   return (
-    // <ThemeProvider theme={current_dark_mode ? dark : light}>
     <div
       className="detailed_page"
       style={
@@ -259,7 +258,6 @@ const DetailedJob = () => {
         </div>
       )}
     </div>
-    // </ThemeProvider>
   );
 };
 
