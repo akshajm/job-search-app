@@ -1,26 +1,14 @@
-import React, { useState, useEffect } from "react";
-import { HashRouter as Router, Route, Switch, Link } from "react-router-dom";
+import React, { useEffect } from "react";
+import { HashRouter as Router } from "react-router-dom";
 import "./JobsPanel.css";
-import Card from "@material-ui/core/Card";
-import CardContent from "@material-ui/core/CardContent";
-import { Avatar, Typography, CardActionArea } from "@material-ui/core";
-import { makeStyles } from "@material-ui/core/styles";
-import DetailedJob from "../DetailedJob/DetailedJob";
-import Moment from "react-moment";
 import { loading_component as LoadingComponent } from "../../utils/loading_component";
 import { useSelector, useDispatch } from "react-redux";
 import JobCard from "./JobCard";
 import {
   jobs,
-  latitude,
-  longitude,
   is_submitted,
-  description,
-  fulltime,
-  location,
   error_occured,
   no_data,
-  page,
 } from "../../actions/index";
 
 const JobsPanel = () => {

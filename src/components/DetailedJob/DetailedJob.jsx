@@ -17,17 +17,7 @@ import FormControlLabel from "@material-ui/core/FormControlLabel";
 import FormControl from "@material-ui/core/FormControl";
 import { useSelector, useDispatch } from "react-redux";
 import { loading_component as LoadingComponent } from "../../utils/loading_component";
-import {
-  description,
-  fulltime,
-  location,
-  latitude,
-  longitude,
-  is_submitted,
-  jobs,
-  dark_mode,
-  detailed_data,
-} from "../../actions/index";
+import { dark_mode, detailed_data } from "../../actions/index";
 import {
   DARK_BLUE,
   LIGHT_GREY,
@@ -35,44 +25,8 @@ import {
   WHITE,
   LIGHT_BLUE,
 } from "../../utils/colors";
-// const light = createMuiTheme({
-//   type: "light",
-//   palette: {
-//     primary: {
-//       main: PURPLE,
-//       dark: WHITE,
-//     },
-//     secondary: {
-//       main: PURPLE,
-//       dark: LIGHT_GREY,
-//     },
-//   },
-// });
-// const dark = createMuiTheme({
-//   palette: {
-//     type: "dark",
-//     primary: {
-//       main: PURPLE,
-//       dark: LIGHT_BLUE,
-//     },
-//     secondary: {
-//       main: PURPLE,
-//       dark: DARK_BLUE,
-//     },
-//   },
-// });
-
-const useStyles = makeStyles((theme) => ({
-  back_dark: {
-    backgroundColor: theme.palette.primary.dark,
-  },
-  text_col: {
-    // color: theme.pallete.secondary.light,
-  },
-}));
 
 const DetailedJob = () => {
-  const classes = useStyles();
   let { id } = useParams();
 
   const dispatch = useDispatch();

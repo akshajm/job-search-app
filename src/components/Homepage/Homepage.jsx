@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import Header from "../Header/Header";
 import "./Homepage.css";
 import JobsPanel from "../JobsPanel/JobsPanel";
@@ -14,14 +14,7 @@ import {
 import { createMuiTheme, ThemeProvider } from "@material-ui/core/styles";
 import Pagination from "../../utils/Pagination";
 
-const useStyles = makeStyles((theme) => ({
-  back: {
-    backgroundColor: "#f0f0f0",
-  },
-}));
-
 const Homepage = () => {
-  const classes = useStyles();
   const light = createMuiTheme({
     type: "light",
     palette: {
@@ -48,9 +41,10 @@ const Homepage = () => {
       },
     },
   });
+
   const is_dark_mode = useSelector((state) => state.dark_mode_reducer);
   const current_listings = useSelector((state) => state.job_reducer);
-  const is_submit = useSelector((state) => state.is_submitted_reducer);
+
   return (
     <ThemeProvider theme={is_dark_mode ? dark : light}>
       <div

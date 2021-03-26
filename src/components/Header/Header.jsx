@@ -1,6 +1,4 @@
-import React, { useState, useEffect } from "react";
-
-import JobsPanel from "../JobsPanel/JobsPanel";
+import React, { useEffect } from "react";
 import "./Header.css";
 import { makeStyles } from "@material-ui/core/styles";
 import { Button, TextField, FormControl } from "@material-ui/core";
@@ -10,15 +8,9 @@ import Card from "@material-ui/core/Card";
 import SearchIcon from "@material-ui/icons/Search";
 import LocationOnIcon from "@material-ui/icons/LocationOn";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
-// import FormControl from "@material-ui/core/FormControl";
+
 import { useSelector, useDispatch } from "react-redux";
-import {
-  PURPLE,
-  WHITE,
-  DARK_BLUE,
-  LIGHT_BLUE,
-  LIGHT_GREY,
-} from "../../utils/colors";
+import { PURPLE, WHITE, LIGHT_BLUE } from "../../utils/colors";
 import {
   description,
   fulltime,
@@ -31,8 +23,6 @@ import {
   no_data,
   page,
 } from "../../actions/index";
-
-const useStyles = makeStyles((theme) => ({}));
 
 const Header = () => {
   //Redux
@@ -80,7 +70,6 @@ const Header = () => {
   const current_description = useSelector((state) => state.description_reducer);
   const current_location = useSelector((state) => state.location_reducer);
   const current_dark_mode = useSelector((state) => state.dark_mode_reducer);
-  const classes = useStyles();
 
   return (
     <div className="header">

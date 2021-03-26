@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-import { HashRouter as Router, Route, Switch, Link } from "react-router-dom";
+import React from "react";
+import { Link } from "react-router-dom";
 import "./JobsPanel.css";
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
