@@ -1,6 +1,6 @@
 import { useSelector, useDispatch } from "react-redux";
 import { Button } from "@material-ui/core";
-import { page } from "./actions/index";
+import { page } from "../actions/index";
 import { PURPLE, WHITE } from "./colors";
 
 const Pagination = () => {

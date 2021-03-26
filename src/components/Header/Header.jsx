@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-import JobsPanel from "./JobsPanel";
+import JobsPanel from "../JobsPanel/JobsPanel";
 import "./Header.css";
 import { makeStyles } from "@material-ui/core/styles";
 import { Button, TextField, FormControl } from "@material-ui/core";
@@ -12,7 +12,13 @@ import LocationOnIcon from "@material-ui/icons/LocationOn";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 // import FormControl from "@material-ui/core/FormControl";
 import { useSelector, useDispatch } from "react-redux";
-import { PURPLE, WHITE, DARK_BLUE, LIGHT_BLUE, LIGHT_GREY } from "./colors";
+import {
+  PURPLE,
+  WHITE,
+  DARK_BLUE,
+  LIGHT_BLUE,
+  LIGHT_GREY,
+} from "../../utils/colors";
 import {
   description,
   fulltime,
@@ -24,7 +30,7 @@ import {
   dark_mode,
   no_data,
   page,
-} from "./actions/index";
+} from "../../actions/index";
 
 const useStyles = makeStyles((theme) => ({}));
 

@@ -16,7 +16,7 @@ import Moment from "react-moment";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import FormControl from "@material-ui/core/FormControl";
 import { useSelector, useDispatch } from "react-redux";
-import { loading_component as LoadingComponent } from "./loading_component";
+import { loading_component as LoadingComponent } from "../../utils/loading_component";
 import {
   description,
   fulltime,
@@ -27,8 +27,14 @@ import {
   jobs,
   dark_mode,
   detailed_data,
-} from "./actions/index";
-import { DARK_BLUE, LIGHT_GREY, PURPLE, WHITE, LIGHT_BLUE } from "./colors";
+} from "../../actions/index";
+import {
+  DARK_BLUE,
+  LIGHT_GREY,
+  PURPLE,
+  WHITE,
+  LIGHT_BLUE,
+} from "../../utils/colors";
 // const light = createMuiTheme({
 //   type: "light",
 //   palette: {

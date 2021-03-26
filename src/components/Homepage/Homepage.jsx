@@ -1,12 +1,18 @@
 import React, { useState, useEffect } from "react";
-import Header from "./Header";
+import Header from "../Header/Header";
 import "./Homepage.css";
-import JobsPanel from "./JobsPanel";
+import JobsPanel from "../JobsPanel/JobsPanel";
 import { makeStyles } from "@material-ui/core/styles";
 import { useSelector } from "react-redux";
-import { PURPLE, WHITE, DARK_BLUE, LIGHT_BLUE, LIGHT_GREY } from "./colors";
+import {
+  PURPLE,
+  WHITE,
+  DARK_BLUE,
+  LIGHT_BLUE,
+  LIGHT_GREY,
+} from "../../utils/colors";
 import { createMuiTheme, ThemeProvider } from "@material-ui/core/styles";
-import Pagination from "./Pagination";
+import Pagination from "../../utils/Pagination";
 
 const useStyles = makeStyles((theme) => ({
   back: {

@@ -1,8 +1,8 @@
 import "./App.css";
 import { HashRouter as Router, Route, Switch, Link } from "react-router-dom";
 
-import DetailedJob from "./DetailedJob";
-import Homepage from "./Homepage";
+import DetailedJob from "./components/DetailedJob/DetailedJob";
+import Homepage from "./components/Homepage/Homepage";
 
 function App() {
   return (

@@ -5,9 +5,9 @@ import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
 import { Avatar, Typography, CardActionArea } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
-import DetailedJob from "./DetailedJob";
+import DetailedJob from "../DetailedJob/DetailedJob";
 import Moment from "react-moment";
-import { loading_component as LoadingComponent } from "./loading_component";
+import { loading_component as LoadingComponent } from "../../utils/loading_component";
 import { useSelector, useDispatch } from "react-redux";
 import JobCard from "./JobCard";
 import {
@@ -21,7 +21,7 @@ import {
   error_occured,
   no_data,
   page,
-} from "./actions/index";
+} from "../../actions/index";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -53,7 +53,6 @@ const JobsPanel = () => {
 
   const fetch_url =
     "https://damp-taiga-98560.herokuapp.com/jobs.github.com/positions.json";
-  // "https://jobs.github.com/positions.json";
 
   useEffect(() => {
     if (is_submit) {
