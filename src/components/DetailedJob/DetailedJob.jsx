@@ -3,13 +3,7 @@ import { Link, useParams } from "react-router-dom";
 import { Button, Avatar, Typography } from "@material-ui/core";
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
-import {
-  makeStyles,
-  createMuiTheme,
-  ThemeProvider,
-} from "@material-ui/core/styles";
-import Box from "@material-ui/core/Box";
-// import "./Header.css";
+
 import "./DetailedJob.css";
 import Switch from "@material-ui/core/Switch";
 import Moment from "react-moment";
@@ -63,8 +57,8 @@ const DetailedJob = () => {
           <LoadingComponent />
         </div>
       ) : (
-        <div>
-          <div className="detailed_header">
+        <React.Fragment>
+          <div className="detailed_header" style={{ backgroundColor: PURPLE }}>
             <div className="title_bar_detailed">
               <div className="website_name_detailed">
                 <h3>devjobs</h3>
@@ -86,6 +80,11 @@ const DetailedJob = () => {
                 </FormControl>
               </div>
             </div>
+          </div>
+          <div
+            className="overview_card_container"
+            style={{ backgroundColor: PURPLE }}
+          >
             <div className="overview_card">
               <Card
                 style={
@@ -112,7 +111,7 @@ const DetailedJob = () => {
                           : { color: "black" }
                       }
                     >
-                      <p>{description.company}</p>
+                      <h3>{description.company}</h3>
                     </div>
                     <div
                       className="company_name"
@@ -122,7 +121,7 @@ const DetailedJob = () => {
                           : { color: "black" }
                       }
                     >
-                      <p>{description.company}</p>
+                      <p>{description.company_url}</p>
                     </div>
                   </div>
                   <div className="company_site_button">
@@ -138,7 +137,7 @@ const DetailedJob = () => {
               </Card>
             </div>
           </div>
-          <div className="main_detailes">
+          <div className="main_detail_container">
             <div className="main_detail">
               <Card
                 style={
@@ -198,18 +197,19 @@ const DetailedJob = () => {
                 </CardContent>
               </Card>
             </div>
-            <div className="how_to_apply">
-              <Card style={{ backgroundColor: PURPLE, color: WHITE }}>
-                <CardContent>
-                  <Typography variant="h6" component="h6" gutterBottom>
-                    How to Apply
-                  </Typography>
-                  <p>{description.how_to_apply}</p>
-                </CardContent>
-              </Card>
-            </div>
           </div>
-        </div>
+          <div className="how_to_apply">
+            <Card style={{ backgroundColor: PURPLE, color: WHITE }}>
+              <CardContent>
+                <Typography variant="h6" component="h6" gutterBottom>
+                  How to Apply
+                </Typography>
+                <p>{description.how_to_apply}</p>
+              </CardContent>
+            </Card>
+          </div>
+          {/* </div> */}
+        </React.Fragment>
       )}
     </div>
   );

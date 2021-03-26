@@ -28,7 +28,7 @@
   width: 60%;
   margin-left: auto;
   margin-right: auto;
-  margin-top: 5%;
+  margin-top: 2%;
 }
 
 .split_requirements {
@@ -43,10 +43,11 @@
   justify-content: space-between;
   align-items: center;
   color: white;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-.detailed_header {
-  background-color: #5865e0;
+.overview_card_container {
   border-radius: 0 0 0 55px;
   width: 100%;
   display: flex;
@@ -59,4 +60,28 @@
 
 .overview_card {
   width: 60%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@media only screen and (max-width: 768px) {
+  .header_elements,
+  .split_requirements {
+    flex-direction: column;
+  }
+  .main_detail_container {
+    margin-top: 20%;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .main_detail_container {
+    margin-top: 30%;
+  }
+}
+
+@media only screen and (max-width: 330px) {
+  .main_detail_container {
+    margin-top: 40%;
+  }
 }

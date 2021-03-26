@@ -36,3 +36,14 @@
 .filter {
   width: 73%;
 }
+
+@media only screen and (max-width: 768px) {
+  .child_location,
+  .child_fulltime {
+    display: none;
+  }
+
+  .job_listings {
+    margin-top: 50px;
+  }
+}
